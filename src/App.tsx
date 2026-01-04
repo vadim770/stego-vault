@@ -195,7 +195,54 @@ function App() {
 
   return (
     <div className="max-w-3xl mx-auto p-8 flex flex-col gap-6 text-white min-h-screen bg-[#1a1a1a]">
-      <h1 className="text-4xl font-bold text-center text-green-400 mb-2">StegoVault Web 🌐</h1>
+      {/* --- HERO SECTION --- */}
+      <div className="text-center mb-10 space-y-4">
+        <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-6 pb-2 leading-tight">
+          StegoVault
+        </h1>
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          Hide sensitive files inside innocent images using military-grade encryption.
+        </p>
+        
+        {/* Trust Badges */}
+        <div className="flex justify-center gap-4 text-sm font-semibold text-gray-400 mt-2">
+          <span className="flex items-center gap-1 bg-zinc-800 px-3 py-1 rounded-full border border-zinc-700">
+            🔒 AES-256 Encryption
+          </span>
+          <span className="flex items-center gap-1 bg-zinc-800 px-3 py-1 rounded-full border border-zinc-700">
+            ⚡ 100% Offline (WASM)
+          </span>
+          <span className="flex items-center gap-1 bg-zinc-800 px-3 py-1 rounded-full border border-zinc-700">
+            🕵️ Zero-Knowledge
+          </span>
+        </div>
+      </div>
+
+      {/* --- HOW IT WORKS (Collapsible or Grid) --- */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700 hover:border-green-500/50 transition-colors">
+          <div className="text-green-400 font-bold text-lg mb-1">Step 1: The Carrier</div>
+          <p className="text-sm text-gray-400">
+            Upload a standard PNG image. This will act as the "safe" that hides your secret data.
+          </p>
+        </div>
+        
+        <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700 hover:border-green-500/50 transition-colors">
+          <div className="text-green-400 font-bold text-lg mb-1">Step 2: The Secret</div>
+          <p className="text-sm text-gray-400">
+            Select the file you want to hide (Text, PDF, Zip). We compress and encrypt it automatically.
+          </p>
+        </div>
+        
+        <div className="bg-zinc-800/50 p-4 rounded-lg border border-zinc-700 hover:border-green-500/50 transition-colors">
+          <div className="text-green-400 font-bold text-lg mb-1">Step 3: Lock It</div>
+          <p className="text-sm text-gray-400">
+            Set a password. Your data is scattered across pixels using chaos theory logic. Only the password can retrieve it.
+          </p>
+        </div>
+      </div>
+      
+      {/* --- END HERO SECTION --- */}
 
       {/* 1. CARRIER IMAGE */}
       <div className="bg-[#333] p-6 rounded-lg shadow-md border border-gray-700">
