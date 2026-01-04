@@ -4,8 +4,6 @@
 
 StegoVault is a secure web application that allows you to hide sensitive files inside standard PNG images. Unlike traditional online tools, **StegoVault processes everything locally in your browser**. Your files never leave your device, ensuring 100% privacy.
 
-![StegoVault Preview](https://via.placeholder.com/800x400?text=StegoVault+Interface+Preview)
-
 ## ✨ Features
 
 * **🛡️ Military-Grade Encryption:** Files are encrypted with **AES-256-GCM** before being hidden.
@@ -33,7 +31,7 @@ StegoVault is a secure web application that allows you to hide sensitive files i
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/your-username/stego-vault.git](https://github.com/your-username/stego-vault.git)
+    git clone [https://github.com/vadim770/stego-vault.git](https://github.com/vadim770/stego-vault.git)
     cd stego-vault
     ```
 
@@ -78,7 +76,3 @@ The output will be in the `dist` folder.
 2.  **Encryption:** The compressed blob is encrypted using a key derived from your password.
 3.  **Shuffling:** A seeded Random Number Generator (ChaCha20) creates a unique list of pixel coordinates based on your password.
 4.  **Embedding:** The encrypted bits are injected into the **Least Significant Bits (LSB)** of the specific pixels chosen by the shuffler.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
