@@ -29,7 +29,7 @@ StegoVault is a secure web application that allows you to hide sensitive files i
 
 ### Installation
 
-  1.  **Clone the repository**
+1.  **Clone the repository**
     ```bash
     git clone https://github.com/vadim770/stego-vault.git
     cd stego-vault
