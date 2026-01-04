@@ -348,6 +348,23 @@ function App() {
         <span className="text-green-600 mr-2">➜</span> {status}
       </div>
 
+      <footer className="mt-20 border-t border-zinc-800 pt-6 pb-10 text-center text-xs text-zinc-600">
+        <p className="mb-2">StegoVault &copy; {new Date().getFullYear()}</p>
+        
+        {/* The Attribution Link */}
+        <p>
+          <a 
+            href="https://www.flaticon.com/free-icons/photo-gallery" 
+            title="photo gallery icons"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-zinc-400 transition-colors underline decoration-zinc-700"
+          >
+            Photo gallery icons created by Freepik - Flaticon
+          </a>
+        </p>
+      </footer>
+
       <SpeedInsights />
     </div>
 
