@@ -1,1 +1,0 @@
-Note: If you ever change your Rust code, you must run wasm-pack build again inside the stego_wasm folder to update this package.

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 // Import from our local WASM package
 import init, { encrypt_and_hide, decrypt_and_extract, preview_heatmap, calculate_required_pixels } from "stego_wasm";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // Helper to determine color and label
 const getStealthStatus = (ratio: number) => {
@@ -284,7 +285,11 @@ function App() {
       <div className="p-4 bg-black text-green-400 font-mono rounded-lg border border-gray-800 text-sm overflow-hidden whitespace-pre-wrap">
         <span className="text-green-600 mr-2">➜</span> {status}
       </div>
+
+      <SpeedInsights />
     </div>
+
+    
   );
 }
 
