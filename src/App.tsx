@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 // Import from our local WASM package
 import init, { encrypt_and_hide, decrypt_and_extract, preview_heatmap, calculate_required_pixels } from "stego_wasm";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Github } from "lucide-react";
 
 // Helper to determine color and label
 const getStealthStatus = (ratio: number) => {
@@ -195,6 +196,20 @@ function App() {
 
   return (
     <div className="max-w-3xl mx-auto p-8 flex flex-col gap-6 text-white min-h-screen bg-[#1a1a1a]">
+
+      {/* --- NEW: TOP HEADER --- */}
+        <div className="flex justify-end w-full">
+          <a 
+            href="https://github.com/vadim770/stego-vault" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm font-medium"
+          >
+            <Github size={20} />
+            <span>View Source</span>
+          </a>
+        </div>
+
       {/* --- HERO SECTION --- */}
       <div className="text-center mb-10 space-y-4">
         <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-6 pb-2 leading-tight">
