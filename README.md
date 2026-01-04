@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# 🔒 StegoVault Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Professional Client-Side Steganography Tool powered by Rust & WebAssembly.**
 
-Currently, two official plugins are available:
+StegoVault is a secure web application that allows you to hide sensitive files inside standard PNG images. Unlike traditional online tools, **StegoVault processes everything locally in your browser**. Your files never leave your device, ensuring 100% privacy.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![StegoVault Preview](https://via.placeholder.com/800x400?text=StegoVault+Interface+Preview)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **🛡️ Military-Grade Encryption:** Files are encrypted with **AES-256-GCM** before being hidden.
+* **🕵️‍♂️ True Privacy:** Powered by **WebAssembly (WASM)**. No data is ever uploaded to a server.
+* **📉 Smart Compression:** Automatically compresses files using Zlib to minimize image noise.
+* **🎲 Chaos Shuffling:** Data is scattered across random pixels (seeded by your password) using **ChaCha20**, making statistical detection nearly impossible.
+* **📊 Stealth Meter:** Real-time visual indicator showing how "detectable" your hidden file is.
+* **👁️ Scatter Preview:** Generate a heatmap to see exactly which pixels will be modified before you commit.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend:** React, TypeScript, Tailwind CSS, Vite
+* **Backend:** Rust (compiled to WASM)
+* **Cryptography:** `aes-gcm`, `chacha20poly1305`, `rand`
+* **Image Processing:** `image` crate (Rust), Canvas API (JS)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
+* **Node.js** (v16+)
+* **Rust** (latest stable)
+* **wasm-pack**: `cargo install wasm-pack`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/your-username/stego-vault.git](https://github.com/your-username/stego-vault.git)
+    cd stego-vault
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2.  **Install Frontend Dependencies**
+    ```bash
+    npm install
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3.  **Build the WASM Module**
+    The core logic lives in `stego_wasm` and needs to be compiled before the site can run.
+    ```bash
+    cd stego_wasm
+    wasm-pack build --target web
+    cd ..
+    ```
+
+4.  **Run the Development Server**
+    ```bash
+    npm run dev
+    ```
+    Open `http://localhost:5173` to view it in the browser.
+
+## 🏗️ Building for Production
+
+To create a production-ready build (e.g., for Vercel or GitHub Pages):
+
+1.  **Build WASM:**
+    ```bash
+    cd stego_wasm && wasm-pack build --target web
+    ```
+
+2.  **Build Frontend:**
+    ```bash
+    cd .. && npm run build
+    ```
+
+The output will be in the `dist` folder.
+
+## 🧠 How It Works
+
+1.  **Compression:** The secret file is compressed to reduce its footprint.
+2.  **Encryption:** The compressed blob is encrypted using a key derived from your password.
+3.  **Shuffling:** A seeded Random Number Generator (ChaCha20) creates a unique list of pixel coordinates based on your password.
+4.  **Embedding:** The encrypted bits are injected into the **Least Significant Bits (LSB)** of the specific pixels chosen by the shuffler.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
