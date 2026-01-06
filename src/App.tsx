@@ -79,7 +79,10 @@ function App() {
           resolve(new Uint8Array(reader.result));
         } else reject("Failed to read file");
       };
-      reader.onerror = reject;
+      reader.onerror = () => {
+          console.error("FileReader Error:", reader.error);
+          reject(reader.error);
+      };
       reader.readAsArrayBuffer(file);
     });
   };
